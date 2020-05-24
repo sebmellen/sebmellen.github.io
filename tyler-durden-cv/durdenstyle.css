@@ -1,0 +1,71 @@
+@font-face 
+{
+    font-family: 'FightThis';
+    src: url('font/FightThis.woff') format('woff'),
+    	url('font/FightThis.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body
+{
+	margin: 1px;
+	margin-right: 100px;
+	margin-left: 100px;
+	padding: 8px;
+    font-family: "Arial Black", Arial, Verdana, sans-serif;
+    font-size: 1em;
+    color: black;
+    background-image: url('images/fightclublogo.png'), linear-gradient(#2f0d0d, #931c17, #e65c00, #e68700, #e69d00, #fdbb2d);
+	background-attachment: scroll;
+}
+
+h1
+{
+	color: #fdbb2d;
+	text-align: center;
+	text-shadow: 0px 0px 79px #e68700;
+	font-family: FightThis, "Arial Black", Arial, Verdana, sans-serif;
+	font-size: 4em;
+}
+
+h4
+{
+	color: #fdbb2d;
+	text-align: center;
+	font-family: FightThis, "Arial Black", Arial, Verdana, sans-serif;
+	font-size: 2.2em;
+}
+
+p
+{
+	font-size: 2em;
+}
+
+em
+{
+	text-decoration: underline;
+}
+
+
+/*class specific items below*/
+
+.portrait /*positioning and borders of Tyler Durden's headshot.*/
+{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 200px;
+	border: 5px solid rgba(253, 187, 45, 0.8);
+    box-shadow: 10px 10px 12px #931c17;
+}
+
+.bottomimg
+{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 200px;
+    border: 2px solid #cb6a80;
+    border-radius: 300px;
+}
