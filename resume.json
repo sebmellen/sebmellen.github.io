@@ -1,0 +1,248 @@
+{
+  "meta": { "theme": "spartan" },
+  "basics": {
+    "name": "Sebastian L. Mellen",
+    "label": "Thinker, Developer, Founder, CEO",
+    "picture": "",
+    "email": "s@slm.space",
+    "phone": "+1 (858) 342-3398",
+    "website": "https://slm.space",
+    "summary": "I've spent years working on blockchain technology, decentralization, and information networks. This has culminated in my work at Assembl, where we're building the decentralized publishing infrastructure for the open and transparent future of science, starting with our Chronos and Databeam apps, and culminating in the development of our Interplanetary Publishing Protocol.",
+    "location": {
+      "address": "11786 River Rim Road",
+      "postalCode": "CA 92126",
+      "city": "San Diego",
+      "countryCode": "US",
+      "region": "USA"
+    },
+    "profiles": [
+      {
+        "network": "Github",
+        "username": "sebmellen",
+        "url": "https://github.com/sebmellen/"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "sebmellen",
+        "url": "https://www.linkedin.com/in/sebmellen/"
+      },
+      {
+        "network": "Twitter",
+        "username": "sebmellen",
+        "url": "https://twitter.com/sebmellen"
+      },
+      {
+        "network": "Hacker News",
+        "username": "sebmellen",
+        "url": "https://news.ycombinator.com/user?id=sebmellen"
+      }
+    ]
+  },
+  "work": [
+    {
+      "company": "Assembl Inc.",
+      "highlights": [],
+      "position": "Founder & CEO",
+      "startDate": "2019-03-07",
+      "summary": "Building a global scientific network that gives control of the research process back to scientists.",
+      "highlights": [
+        "- Led a $135,000 fundraising round at a 1.25MM valuation from CV VC and an angel group in Germany and Switzerland.",
+        "- Led development of Databeam web and desktop — a fully decentralized, GDPR, HIPAA, and BDSG compliant data transfer system, built on WebRTC and WebTorrents.",
+        "- Created a routing engine and backend API layer to interact with the Stellar blockchain and add arbitrary data on-chain via IPFS multihash links as MEMO Hashes.",
+        "- Started LIRAS, the Licensing Iniative for Research, Academia, and Science, working with more than 20 scientists across the country to build a new licensing model for science.",
+        "- Hosted the Torch of Knowledge podcast to foster new thought in science.",
+        "- Built a network of almost 1,000 people active in blockchain and open science."
+      ],
+      "website": "https://assembl.net"
+    },
+    {
+      "company": "The Daring LLC",
+      "highlights": [],
+      "position": "Founder",
+      "startDate": "2019-08-31",
+      "summary": "I act as a part-time software and technology consultant through The Daring LLC.",
+      "website": "https://dar.i.ng"
+    },
+    {
+      "company": "LotBlok",
+      "endDate": "2019-05-31",
+      "highlights": [],
+      "position": "Blockchain Tech Lead",
+      "startDate": "2018-09-30",
+      "highlights": [
+        "- Led development of backend token infrastructure and desktop app.",
+        "- Refactored legacy web-app and created new plugins to web-app overseeing a team of two developers.",
+        "- Introduced LotBlok founders to broad network of contacts for video creation, fundraising, and sales.",
+        "- Wrote LotBlok whitepaper."
+      ],
+      "website": "https://lotblok.com"
+    },
+    {
+      "company": "KULR Technology Corporation",
+      "endDate": "2018-02-28",
+      "highlights": [],
+      "position": "Safety Consultant",
+      "startDate": "2017-09-30",
+      "highlights": [
+        "- Acted as lead OSHA-certified safety officer.",
+        "- Assembled experimental carbon flocking chambers for technology used on NASA's Mars Curiosity Rover.",
+        "- Worked as factory assistant for cooling pad fabrication."
+      ],
+      "website": "https://kulrtechnology.com/"
+    }
+  ],
+  "volunteer": [],
+  "education": [
+    {
+      "institution": "OpenClassrooms & École Polytechnique",
+      "area": "Bachelor's in Software Application Development (Unfinished)",
+      "studyType": "I began a Bachelor's diploma program recognized under the Bologna Process with OpenClassrooms, taught in part through online courses by the École Polytechnique in Paris, and continued the program for approximately 6 months before leaving to work on a software devleopment contract project.",
+      "startDate": "2018-02-24",
+      "endDate": "2018-08-15"
+    },
+    {
+      "institution": "Peace Operations Training Institute",
+      "area": "UN Core Pre-Deployment Training Materials",
+      "studyType": "I completed this program as part of the UN Peacekeeping Deployment Certification, in preparation to become a UN Peacekeeper and/or join the US Coast Guard. This auxilliary training from POTI, the Peace Operations Training Institue, covers education topics ranging from diplomatic strategy to the economics of developing countries to UN health and safety programs.",
+      "startDate": "2017-12-20",
+      "endDate": "2018-04-15"
+    },
+    {
+      "institution": "Mt. Everest Academy",
+      "area": "High School Diploma",
+      "studyType": "I completed a high school diploma equivalency program at Mt. Everest Academy, which I finished just a few days after my 16th birthday. I maintained a high GPA (between 3.9 and 4.0) during my time at Mt. Everest Academy, and completed one of the school's few AP courses, AP German, with the higest possible score, 5.0.",
+      "startDate": "2014-09-20",
+      "endDate": "2018-06-17"
+    }
+  ],
+  "awards": [
+    {
+      "title": "Honorary Naming of Minor Planet",
+      "date": "2015-12-21",
+      "awarder": "MIT Lincoln Laboratory / NASA JPL",
+      "summary": "Minor Planet 31689 Sebmellen was honorarily named after me by NASA for my 2nd place win at the Broadcom MASTERS National Science Fair."
+    },
+    {
+      "title": "Marconi-Samueli Prize for Innovation",
+      "date": "2015-11-15",
+      "awarder": "Society for Science & the Public / Broadcom MASTERS National Science Fair",
+      "summary": "This $10,000 prize was awarded to me for \"aptitude and skill in technical and mathematical concepts while demonstrating superior teamwork\"."
+    },
+    {
+      "title": "2015 AFCEA Science Fair Award Winner",
+      "date": "2015-09-29",
+      "awarder": "Armed Forces Communications and Electronics Association"
+    },
+    {
+      "title": "Raytheon Junior Achievement Award",
+      "date": "2015-06-12",
+      "awarder": "California Science & Engineering Fair",
+      "summary": "I was awarded $500 for \"demonstrating the greatest potential, with the ability of achieving technological breakthroughs, in the area of computer science\" at the California Science & Engineering Fair."
+    },
+    {
+      "title": "R.E.D Memorial Award",
+      "date": "2015-04-08",
+      "awarder": "Greater San Diego Science and Engineering Fair",
+      "summary": "A top prize in the junior division of the GDSEF, Honoring Creativity, Originality and Solid Science"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Node.js"
+    },
+    {
+      "name": "JavaScript"
+    },
+    {
+      "name": "Git"
+    },
+    {
+      "name": "Software Architecture Design"
+    },
+    {
+      "name": "Team Leadership"
+    },
+    {
+      "name": "Protocol Development"
+    },
+    {
+      "name": "JSON"
+    },
+    {
+      "name": "HTML5"
+    },
+    {
+      "name": "OSHA 30-hr Certified"
+    }
+  ],
+  "projects": [
+    {
+      "name": "MathSuite — An Innovative Application That Makes Solving Dreaded Equations Fun!",
+      "description": "MathSuite was an app that could parse nearly any algebraic equation into a computer-solvable logic tree, offline, which enabled near instant computation of the aforementioned equations, including a description of how they were arrived at.",
+      "highlights": [
+        "Reached over 10,000 users after being featured in an article on thechive.com",
+        "Worked fully offline, in contrast to all other available solutions, including WolframAlpha",
+        "Selected by United States Forest Service in pilot to calculate burn rates in remote locations without internet access"
+      ],
+      "startDate": "2015-02-15",
+      "endDate": "2015-12-12",
+      "type": "application"
+    },
+    {
+      "name": "Travelmergency",
+      "description": " Travelmergency was an app which included the approved list of emergency numbers for all UN countries. The app allowed travelers to instantly find and dial the emergency numbers in the country they were in. In addition, the app included first aid information taken from publicly available Red Cross database and Mayo Clinic resources. At its peak, Travelmergency received more than 5,000 downloads and had more than 1,000 weekly active users.",
+      "startDate": "2013-10-15",
+      "endDate": "2014-05-12",
+      "type": "application"
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Native Speaker"
+    },
+    {
+      "language": "German",
+      "fluency": "Native Speaker"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Blockchain & Decentralization",
+      "keywords": [
+        "Cryptocurrencies & Tokenomics",
+        "IPFS & DAT Protocol / Content-Based Addressing",
+        "Smart Contracts"
+      ]
+    },
+    {
+      "name": "Open Science",
+      "keywords": [
+        "Decentralized Publishing Networks",
+        "New Licensing Models",
+        "Knowledge Economies"
+      ]
+    },
+    {
+      "name": "Psychedelic Research",
+      "keywords": [
+        "Depression Reversal",
+        "Novel Mental Illness Treatments",
+        "Autonomous Elements of the Psyche"
+      ]
+    },
+    {
+      "name": "Quantum Physics",
+      "keywords": [
+        "String Theory",
+        "Multiverse Theory",
+        "Quantum Computing & Encryption"
+      ]
+    },
+    {
+      "name": "Stoicism",
+      "keywords": ["Epictetus", "Marcus Aurelius", "Seneca"]
+    }
+  ],
+  "references": []
+}
