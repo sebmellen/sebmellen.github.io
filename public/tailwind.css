@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+
+.btn {
+  @apply px-4 py-2 text-white bg-blue-600 rounded;
+}
+
+.link-custom-home {
+  @apply font-bold underline hover:text-gray-100 bg-gradient-to-br from-transparent to-transparent hover:from-bluegray-800 hover:via-gray-800 hover:to-warmgray-800;
+}
+
+.custom-font {
+  font-family: "B612", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.font-custom-sans {
+  font-family: "Work Sans", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@tailwind utilities;

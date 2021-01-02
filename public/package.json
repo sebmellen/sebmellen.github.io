@@ -1,0 +1,20 @@
+{
+  "name": "daring",
+  "version": "1.0.0",
+  "description": "The Daring LLC's website, available at https://dar.i.ng",
+  "main": "index.html",
+  "repository": "https://github.com/sebmellen/daring.git",
+  "author": "Sebastian Mellen <s@slm.space>",
+  "license": "Copyright",
+  "private": true,
+  "dependencies": {
+    "autoprefixer": "^10.1.0",
+    "postcss": "^8.2.1",
+    "tailwindcss": "^2.0.2"
+  },
+  "scripts": {
+    "createtailwind": "npx tailwindcss-cli@latest build -o tailwind.css",
+    "dev": "npx tailwindcss-cli@latest build ./tailwind.css -o ./style.css",
+    "prod": "NODE_ENV=production npx tailwindcss-cli@latest build ./tailwind.css -o ./style.css"
+  }
+}
