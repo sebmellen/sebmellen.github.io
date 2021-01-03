@@ -44,6 +44,10 @@ module.exports = {
       rose: colors.rose,
     },
   },
-  variants: {},
+  variants: {
+    extend: {
+      backgroundClip: ["hover", "focus"],
+    },
+  },
   plugins: [],
 };
