@@ -13,8 +13,8 @@
     "tailwindcss": "^2.0.2"
   },
   "scripts": {
-    "createtailwind": "npx tailwindcss-cli@latest build -o tailwind.css",
-    "dev": "npx tailwindcss-cli@latest build ./tailwind.css -o ./style.css",
-    "prod": "NODE_ENV=production npx tailwindcss-cli@latest build ./tailwind.css -o ./style.css"
+    "createtailwind": "npx tailwindcss-cli@latest build -o ./assets/tailwind.css",
+    "dev": "npx tailwindcss-cli@latest build ./assets/tailwind.css -o ./assets/style.css",
+    "prod": "NODE_ENV=production npx tailwindcss-cli@latest build ./assets/tailwind.css -o ./assets/style.css"
   }
 }
