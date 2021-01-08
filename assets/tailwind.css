@@ -9,10 +9,6 @@
   @apply font-bold underline hover:text-gray-100 bg-gradient-to-br from-transparent to-transparent hover:from-bluegray-800 hover:via-gray-800 hover:to-warmgray-800;
 }
 
-.custom-font {
-  font-family: "B612", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-
 .font-custom-sans {
   font-family: "Silka", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }

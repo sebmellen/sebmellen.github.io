@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?exs739');
-  src:  url('fonts/icomoon.eot?exs739#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?exs739') format('truetype'),
-    url('fonts/icomoon.woff?exs739') format('woff'),
-    url('fonts/icomoon.svg?exs739#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?1solmn');
+  src:  url('fonts/icomoon.eot?1solmn#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?1solmn') format('truetype'),
+    url('fonts/icomoon.woff?1solmn') format('woff'),
+    url('fonts/icomoon.svg?1solmn#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,8 +25,17 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-edit-3:before {
-  content: "\e900";
+.icon-user:before {
+  content: "\e90a";
+}
+.icon-youtube:before {
+  content: "\e909";
+}
+.icon-type:before {
+  content: "\e907";
+}
+.icon-key:before {
+  content: "\e908";
 }
 .icon-rss:before {
   content: "\e901";
@@ -42,4 +51,7 @@
 }
 .icon-github:before {
   content: "\e905";
+}
+.icon-hackernews:before {
+  content: "\eac7";
 }
