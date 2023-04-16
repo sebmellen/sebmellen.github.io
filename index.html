@@ -20,18 +20,18 @@
         width: 10px;
         height: 10px;
         border-radius: 50%;
-         background-color: rgba(255, 255, 255, 0.5);
+        background-color: rgba(255, 255, 255, 0.5);
       }
     </style>
   </head>
   <body
-    class="w-full h-screen pt-16 pb-24 antialiased text-white bg-fixed from-slate-950 to-blue-950 font-custom-sans bg-gradient-to-t"
+    class="w-full h-screen pt-16 pb-24 antialiased text-white bg-fixed from-slate-950 to-blue-950 font-custom-sans bg-gradient-to-t bg-main"
   >
     <script>
-          const dots = [];
+      const dots = [];
       let targetX = window.innerWidth / 2;
       let targetY = 0;
-      
+
       // create 50 dots
       for (let i = 0; i < 50; i++) {
         const dot = document.createElement("div");
@@ -43,7 +43,7 @@
         document.body.appendChild(dot);
         dots.push(dot);
       }
-      
+
       // move the dots towards the top of the screen
       setInterval(() => {
         dots.forEach((dot) => {
@@ -56,8 +56,10 @@
           const vy = Math.sin(angle) * speed;
           const x = parseFloat(dot.style.left) + vx;
           const y = parseFloat(dot.style.top) + vy;
-          dot.style.left = Math.max(0, Math.min(window.innerWidth - 10, x)) + "px";
-          dot.style.top = Math.max(0, Math.min(window.innerHeight - 10, y)) + "px";
+          dot.style.left =
+            Math.max(0, Math.min(window.innerWidth - 10, x)) + "px";
+          dot.style.top =
+            Math.max(0, Math.min(window.innerHeight - 10, y)) + "px";
         });
       }, 50);
     </script>
@@ -68,63 +70,59 @@
         <h1
           class="text-4xl font-bold tracking-wide text-center text-transparent text-white transition-all duration-300 drop-shadow-2xl xl:tracking-tight lg:text-7xl xl:text-8xl font-heading"
         >
-          <span class="hidden md:inline">↜ </span>Sebastian Mellen ↝
+          <span class="hidden md:inline">☀️ </span>Sebastian Mellen<span class="hidden md:inline"> 🍄</span>
         </h1>
-        <h2
+        <div
           class="py-3 text-xl font-medium leading-loose text-center transition-all duration-300 drop-shadow-2xl text-slate-100 md:text-2xl lg:text-3xl xl:text-4xl"
         >
-          ⬡
+          <h2>
+            ⬡
 
-          <a
-            href="https://cerebrum.com"
-            target="_blank"
-            rel="noreferrer noopener"
-            class="p-1 underline transition-all duration-300 rounded hover:text-white bg-gradient-to-r from-transparent to-transparent hover:bg-green-600 hover:bg-opacity-90"
-            >founder</a
-          >
-          /
-          <a
-            href="https://sebastianmellen.com"
-            target="_blank"
-            rel="noreferrer noopener"
-            class="p-1 underline transition-all duration-300 rounded hover:text-white bg-gradient-to-r from-transparent to-transparent hover:bg-emerald-600 hover:bg-opacity-90"
-            >writer</a
-          >
-          /
-          <a
-            href="https://github.com/sebmellen"
-            target="_blank"
-            rel="noreferrer noopener"
-            class="p-1 underline transition-all duration-300 rounded hover:text-white bg-gradient-to-r from-transparent to-transparent hover:bg-cyan-600 hover:bg-opacity-90"
-            >hacker</a
-          >
-          /
-          <a
-            href="https://ssd.jpl.nasa.gov/sbdb.cgi?sstr=31689"
-            target="_blank"
-            rel="noreferrer noopener"
-            class="p-1 underline transition-all duration-300 rounded hover:text-white bg-gradient-to-r from-transparent to-transparent hover:bg-blue-600 hover:bg-opacity-90"
-            >asteroid name donor</a
-          >
-          <span class="hidden md:inline">⬡</span>
-          <br />
-          ⧋ <span class="p-1">pragmatic idealist</span>
-          <span class="hidden md:inline">⧋</span>
-          <br class="my-2 lg:my-6" />
-          ⊙ <span class="p-1">doing my best to solve real problems</span>
-          <span class="hidden md:inline">⊙</span>
-        </h2>
-        <div class="pt-6 transition-all duration-300 ">
+            <a
+              href="https://cerebrum.com"
+              target="_blank"
+              rel="noreferrer noopener"
+              class="p-1 underline transition-all duration-300 rounded hover:text-white bg-gradient-to-r from-transparent to-transparent hover:bg-green-600 hover:bg-opacity-90"
+              >founder</a
+            > · <a
+              href="https://sebastianmellen.com"
+              target="_blank"
+              rel="noreferrer noopener"
+              class="p-1 underline transition-all duration-300 rounded hover:text-white bg-gradient-to-r from-transparent to-transparent hover:bg-emerald-600 hover:bg-opacity-90"
+              >thinker</a
+            > · <a
+              href="https://github.com/sebmellen"
+              target="_blank"
+              rel="noreferrer noopener"
+              class="p-1 underline transition-all duration-300 rounded hover:text-white bg-gradient-to-r from-transparent to-transparent hover:bg-cyan-600 hover:bg-opacity-90"
+              >hacker</a
+            > · <a
+              href="https://ssd.jpl.nasa.gov/sbdb.cgi?sstr=31689"
+              target="_blank"
+              rel="noreferrer noopener"
+              class="p-1 underline transition-all duration-300 rounded hover:text-white bg-gradient-to-r from-transparent to-transparent hover:bg-blue-600 hover:bg-opacity-90"
+              >asteroid name donor</a
+            >
+            <span class="hidden md:inline">⬡</span>
+          </h2>
+          <h2 class="block py-2 md:py-5 xl:py-8">
+            ⧋ <span class="p-1">pragmatic idealist & eternal optimist</span>
+            <span class="hidden md:inline">⧋</span>
+          </h2>
+          <h2>
+            ⊙ <span class="p-1">doing my best to solve real problems</span>
+            <span class="hidden md:inline">⊙</span>
+          </h2>
+        </div>
+        <div class="pt-6 transition-all duration-300">
           <p
             class="space-x-6 text-2xl text-center text-slate-200 md:text-5xl xl:text-6xl"
           >
             <a href="https://news.ycombinator.com/user?id=sebmellen">
               <span
                 class="text-white icon-hackernews hover:text-teal-300"
-              ></span
-            >
-          
-          </a>
+              ></span>
+            </a>
             <a href="https://twitter.com/sebmellen">
               <span
                 class="text-white icon-twitter bg-clip-text hover:text-teal-300"
