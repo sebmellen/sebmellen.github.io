@@ -31,6 +31,26 @@
       const dots = [];
       let targetX = window.innerWidth / 2;
       let targetY = 0;
+      const colors = [
+        "#4d4d4c",
+        "#ffffff",
+        "#d6d6d6",
+        "#efefef",
+        "#8e908c",
+        "#c82829",
+        "#f5871f",
+        "#eab700",
+        "#718c00",
+        "#3e999f",
+        "#4271ae",
+        "#8959a8",
+        "#efefef",
+      ];
+
+      // generate a random color from the provided hex codes
+      function getRandomColor() {
+        return colors[Math.floor(Math.random() * colors.length)];
+      }
 
       // create 50 dots
       for (let i = 0; i < 50; i++) {
@@ -40,21 +60,13 @@
         dot.style.top = Math.random() * window.innerHeight + "px";
         dot.style.left = Math.random() * window.innerWidth + "px";
         // set random size and color
+      
         dot.style.backgroundColor = getRandomColor();
         // add to the body
         document.body.appendChild(dot);
         dots.push(dot);
       }
 
-      // generate a random color
-      function getRandomColor() {
-        const letters = "0123456789ABCDEF";
-        let color = "#";
-        for (let i = 0; i < 6; i++) {
-          color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
-      }
       dots[49].style.backgroundColor = "white";
 
       // move the dots towards the top of the screen
@@ -96,7 +108,7 @@
               href="https://cerebrum.com"
               target="_blank"
               rel="noreferrer noopener"
-              class="p-1 underline transition-all duration-300 rounded hover:text-white bg-gradient-to-r from-transparent to-transparent hover:bg-green-600 hover:bg-opacity-90"
+              class="p-1 underline transition-all duration-300 rounded hover:text-white bg-gradient-to-r from-transparent to-transparent hover:bg-lime-600 hover:bg-opacity-90"
               >founder</a
             >
             ·
