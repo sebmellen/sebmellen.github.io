@@ -14,21 +14,64 @@
     <link rel="stylesheet" href="assets/icomoon/style.css" />
     <link rel="stylesheet" href="assets/fonts/silka/stylesheet.css" />
     <link rel="stylesheet" href="assets/fontstyle.css" />
+    <style>
+      .dot {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+         background-color: rgba(255, 255, 255, 0.5);
+      }
+    </style>
   </head>
   <body
-    class="w-full h-screen pt-16 pb-24 antialiased text-white bg-fixed font-custom-sans bg-gradient-to-tr from-slate-950 via-slate-900 to-slate-800 bg-body text-body font-body"
+    class="w-full h-screen pt-16 pb-24 antialiased text-white bg-fixed from-slate-950 to-blue-950 font-custom-sans bg-gradient-to-t"
   >
+    <script>
+          const dots = [];
+      let targetX = window.innerWidth / 2;
+      let targetY = 0;
+      
+      // create 50 dots
+      for (let i = 0; i < 50; i++) {
+        const dot = document.createElement("div");
+        dot.classList.add("dot");
+        // set random position
+        dot.style.top = Math.random() * window.innerHeight + "px";
+        dot.style.left = Math.random() * window.innerWidth + "px";
+        // add to the body
+        document.body.appendChild(dot);
+        dots.push(dot);
+      }
+      
+      // move the dots towards the top of the screen
+      setInterval(() => {
+        dots.forEach((dot) => {
+          const dx = targetX - parseFloat(dot.style.left);
+          const dy = targetY - parseFloat(dot.style.top);
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          const speed = Math.min(5, distance / 10);
+          const angle = Math.atan2(dy, dx);
+          const vx = Math.cos(angle) * speed;
+          const vy = Math.sin(angle) * speed;
+          const x = parseFloat(dot.style.left) + vx;
+          const y = parseFloat(dot.style.top) + vy;
+          dot.style.left = Math.max(0, Math.min(window.innerWidth - 10, x)) + "px";
+          dot.style.top = Math.max(0, Math.min(window.innerHeight - 10, y)) + "px";
+        });
+      }, 50);
+    </script>
     <div class="container h-full px-5 mx-auto opacity-100 first-letter:">
       <div
         class="flex flex-col items-center justify-center h-full space-y-4 md:space-y-12"
       >
         <h1
-          class="text-4xl font-bold tracking-wide text-center text-transparent text-white transition-all duration-300 xl:tracking-tight lg:text-7xl xl:text-8xl font-heading"
+          class="text-4xl font-bold tracking-wide text-center text-transparent text-white transition-all duration-300 drop-shadow-2xl xl:tracking-tight lg:text-7xl xl:text-8xl font-heading"
         >
           <span class="hidden md:inline">↜ </span>Sebastian Mellen ↝
         </h1>
         <h2
-          class="py-3 text-xl font-medium leading-loose text-center transition-all duration-300 text-slate-100 md:text-2xl lg:text-3xl xl:text-4xl"
+          class="py-3 text-xl font-medium leading-loose text-center transition-all duration-300 drop-shadow-2xl text-slate-100 md:text-2xl lg:text-3xl xl:text-4xl"
         >
           ⬡
 
@@ -44,7 +87,7 @@
             href="https://sebastianmellen.com"
             target="_blank"
             rel="noreferrer noopener"
-            class="p-1 underline transition-all duration-300 rounded hover:text-white bg-gradient-to-r from-transparent to-transparent hover:bg-blue-700 hover:bg-opacity-90"
+            class="p-1 underline transition-all duration-300 rounded hover:text-white bg-gradient-to-r from-transparent to-transparent hover:bg-emerald-600 hover:bg-opacity-90"
             >writer</a
           >
           /
@@ -52,7 +95,7 @@
             href="https://github.com/sebmellen"
             target="_blank"
             rel="noreferrer noopener"
-            class="p-1 underline transition-all duration-300 rounded hover:text-white bg-gradient-to-r from-transparent to-transparent hover:bg-yellow-700 hover:bg-opacity-90"
+            class="p-1 underline transition-all duration-300 rounded hover:text-white bg-gradient-to-r from-transparent to-transparent hover:bg-cyan-600 hover:bg-opacity-90"
             >hacker</a
           >
           /
@@ -60,7 +103,7 @@
             href="https://ssd.jpl.nasa.gov/sbdb.cgi?sstr=31689"
             target="_blank"
             rel="noreferrer noopener"
-            class="p-1 underline transition-all duration-300 rounded hover:text-white bg-gradient-to-r from-transparent to-transparent hover:bg-red-700 hover:bg-opacity-90"
+            class="p-1 underline transition-all duration-300 rounded hover:text-white bg-gradient-to-r from-transparent to-transparent hover:bg-blue-600 hover:bg-opacity-90"
             >asteroid name donor</a
           >
           <span class="hidden md:inline">⬡</span>
@@ -71,40 +114,44 @@
           ⊙ <span class="p-1">doing my best to solve real problems</span>
           <span class="hidden md:inline">⊙</span>
         </h2>
-        <div class="pt-6 pb-10 transition-all duration-300">
+        <div class="pt-6 transition-all duration-300 ">
           <p
             class="space-x-6 text-2xl text-center text-slate-200 md:text-5xl xl:text-6xl"
           >
             <a href="https://news.ycombinator.com/user?id=sebmellen">
               <span
-                class="text-slate-200 hover:text-transparent icon-hackernews hover:bg-clip-text bg-gradient-to-r from-transparent to-transparent hover:from-blue-400 hover:via-teal-300 hover:to-green-400"
+                class="text-white icon-hackernews hover:text-teal-300"
               ></span
-            ></a>
+            >
+          
+          </a>
             <a href="https://twitter.com/sebmellen">
               <span
-                class="text-white icon-twitter bg-clip-text hover:text-transparent bg-gradient-to-r from-transparent to-transparent hover:from-blue-400 hover:via-teal-300 hover:to-green-400"
+                class="text-white icon-twitter bg-clip-text hover:text-teal-300"
               ></span>
             </a>
 
             <a href="https://github.com/sebmellen">
               <span
-                class="text-white icon-github bg-clip-text hover:text-transparent bg-gradient-to-r from-transparent to-transparent hover:from-blue-400 hover:via-teal-300 hover:to-green-400"
+                class="text-white icon-github bg-clip-text hover:text-teal-300"
               ></span
             ></a>
 
             <a href="https://linkedin.com/in/sebmellen">
               <span
-                class="text-white icon-linkedin bg-clip-text hover:text-transparent bg-gradient-to-r from-transparent to-transparent hover:from-blue-400 hover:via-teal-300 hover:to-green-400"
+                class="text-white icon-linkedin bg-clip-text hover:text-teal-300"
               ></span>
             </a>
 
             <a href="https://sebmellen.com">
               <span
-                class="text-white icon-rss bg-clip-text hover:text-transparent bg-gradient-to-r from-transparent to-transparent hover:from-blue-400 hover:via-teal-300 hover:to-green-400"
+                class="text-white icon-rss bg-clip-text hover:text-teal-300"
               ></span
             ></a>
           </p>
-          <div class="bg-orange-950 bg-slate-900 bg-slate-800 bg-slate-200"></div>
+          <div
+            class="bg-orange-950 bg-slate-900 bg-slate-800 bg-slate-200"
+          ></div>
         </div>
       </div>
     </div>
