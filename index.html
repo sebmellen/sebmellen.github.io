@@ -59,7 +59,7 @@
         numDots = 20;
       }
 
-      // create 50 dots
+      // create the dots
       for (let i = 0; i < numDots; i++) {
         const dot = document.createElement("div");
         dot.classList.add("dot");
@@ -73,7 +73,7 @@
         dots.push(dot);
       }
 
-      dots[49].style.backgroundColor = "white";
+      dots[numDots - 1].style.backgroundColor = "white";
 
       // move the dots towards the top of the screen
       setInterval(() => {
