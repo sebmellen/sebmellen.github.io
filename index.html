@@ -53,8 +53,14 @@
         return colors[Math.floor(Math.random() * colors.length)];
       }
 
+      // determine the number of dots based on device width
+      let numDots = 50;
+      if (window.innerWidth <= 720) {
+        numDots = 20;
+      }
+
       // create 50 dots
-      for (let i = 0; i < 50; i++) {
+      for (let i = 0; i < numDots; i++) {
         const dot = document.createElement("div");
         dot.classList.add("dot");
         // set random position
