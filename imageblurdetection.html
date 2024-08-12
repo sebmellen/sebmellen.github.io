@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Text Blur Detection</title>
+      <style>
+         body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; max-width: 800px; margin: 0 auto; }
+         .container { display: flex; flex-direction: column; align-items: center; }
+         #originalCanvas { max-width: 100%; height: auto; border: 1px solid #ddd; margin-top: 20px; display: none; }
+      </style>
+   </head>
+   <body>
+      <h1>Text Blur Detection</h1>
+      <input type="file" id="imageInput" accept="image/*">
+      <div class="container">
+         <canvas id="originalCanvas"></canvas>
+         <img id="resizedImage" alt="Resized Image">
+      </div>
+      <div id="result"></div>
+      <script type="module">
+         // blurDetection.js
+         
+         /**
+          * Detects blur in an image.
+          * @param {Uint8ClampedArray} imageData - The image data in RGBA format.
+          * @param {number} width - The width of the image.
+          * @param {number} height - The height of the image.
+          * @param {number} [blockSize=32] - The size of the blocks to divide the image into for variance calculation.
+          * @param {number} [blurThreshold=0.5] - The threshold from 0 to 1 to determine if the image is blurred.
+          * @returns {{clarityScore: number, isBlurred: boolean, rawClarityScore: number}} The blur detection result.
+          * @throws Will throw an error if the input is invalid.
+          */
+         export function detectBlur(imageData, width, height, blockSize = 32, blurThreshold = 0.5) {
+             // Validate inputs
+             if (!(imageData instanceof Uint8ClampedArray)) {
+                 throw new Error('Invalid imageData: expected Uint8ClampedArray.');
+             }
+             if (typeof width !== 'number' || width <= 0) {
+                 throw new Error('Invalid width: expected a positive number.');
+             }
+             if (typeof height !== 'number' || height <= 0) {
+                 throw new Error('Invalid height: expected a positive number.');
+             }
+             if (typeof blockSize !== 'number' || blockSize <= 0) {
+                 throw new Error('Invalid blockSize: expected a positive number.');
+             }
+             if (typeof blurThreshold !== 'number' || blurThreshold < 0 || blurThreshold > 1) {
+                 throw new Error('Invalid blurThreshold: expected a number between 0 and 1.');
+             }
+         
+             try {
+                 const grayscale = convertToGrayscale(imageData, width, height);
+                 const laplacian = applyLaplacian(grayscale, width, height);
+                 const rawClarityScore = calculateBlockVariance(laplacian, width, height, blockSize);
+         
+                 const clarityScore = logAdjustVariance(rawClarityScore, width, height);
+         
+                 return {
+                     clarityScore: clarityScore,
+                     isBlurred: clarityScore < blurThreshold,
+                     rawClarityScore: rawClarityScore
+                 };
+             } catch (error) {
+                 throw new Error(`Error detecting blur: ${error.message}`);
+             }
+         }
+         
+         /**
+          * Converts image data to grayscale.
+          * @param {Uint8ClampedArray} imageData - The image data in RGBA format.
+          * @param {number} width - The width of the image.
+          * @param {number} height - The height of the image.
+          * @returns {Uint8Array} The grayscale image data.
+          * @throws Will throw an error if the conversion fails.
+          */
+         function convertToGrayscale(imageData, width, height) {
+             try {
+                 const grayscale = new Uint8Array(width * height);
+                 for (let i = 0; i < width * height; i++) {
+                     const idx = i * 4;
+                     grayscale[i] = (imageData[idx] * 0.299 + imageData[idx + 1] * 0.587 + imageData[idx + 2] * 0.114);
+                 }
+                 return grayscale;
+             } catch (error) {
+                 throw new Error('Failed to convert image to grayscale.');
+             }
+         }
+         
+         /**
+          * Applies a Laplacian filter to the grayscale image data.
+          * @param {Uint8Array} grayscale - The grayscale image data.
+          * @param {number} width - The width of the image.
+          * @param {number} height - The height of the image.
+          * @returns {Float32Array} The Laplacian filtered image data.
+          * @throws Will throw an error if the Laplacian filter application fails.
+          */
+         function applyLaplacian(grayscale, width, height) {
+             try {
+                 const laplacian = new Float32Array(width * height);
+                 const kernel = [
+                     0, 1, 0,
+                     1, -4, 1,
+                     0, 1, 0
+                 ];
+                 for (let y = 1; y < height - 1; y++) {
+                     for (let x = 1; x < width - 1; x++) {
+                         const idx = y * width + x;
+                         let sum = 0;
+                         for (let ky = -1; ky <= 1; ky++) {
+                             for (let kx = -1; kx <= 1; kx++) {
+                                 const kidx = (ky + 1) * 3 + (kx + 1);
+                                 const pidx = (y + ky) * width + (x + kx);
+                                 sum += grayscale[pidx] * kernel[kidx];
+                             }
+                         }
+                         laplacian[idx] = sum;
+                     }
+                 }
+                 return laplacian;
+             } catch (error) {
+                 throw new Error('Failed to apply Laplacian filter.');
+             }
+         }
+         
+         /**
+          * Calculates the variance of the Laplacian filtered image data for each block.
+          * @param {Float32Array} data - The Laplacian filtered image data.
+          * @param {number} width - The width of the image.
+          * @param {number} height - The height of the image.
+          * @param {number} blockSize - The size of the blocks to divide the image into for variance calculation.
+          * @returns {number} The weighted average variance of the blocks.
+          * @throws Will throw an error if the variance calculation fails.
+          */
+         function calculateBlockVariance(data, width, height, blockSize) {
+             try {
+                 let totalVariance = 0;
+                 let totalWeight = 0;
+                 const centerX = width / 2;
+                 const centerY = height / 2;
+                 const maxDistance = Math.sqrt(centerX * centerX + centerY * centerY);
+         
+                 for (let y = 0; y < height; y += blockSize) {
+                     for (let x = 0; x < width; x += blockSize) {
+                         const blockVariance = calculateVariance(data, width, height, x, y, blockSize);
+                         const blockCenterX = x + blockSize / 2;
+                         const blockCenterY = y + blockSize / 2;
+                         const distanceFromCenter = Math.sqrt((blockCenterX - centerX) ** 2 + (blockCenterY - centerY) ** 2);
+                         const weight = 1 - (distanceFromCenter / maxDistance);
+         
+                         totalVariance += blockVariance * weight;
+                         totalWeight += weight;
+                     }
+                 }
+                 return totalVariance / totalWeight;
+             } catch (error) {
+                 throw new Error('Failed to calculate block variance.');
+             }
+         }
+         
+         /**
+          * Calculates the variance of a block in the image data.
+          * @param {Float32Array} data - The Laplacian filtered image data.
+          * @param {number} width - The width of the image.
+          * @param {number} height - The height of the image.
+          * @param {number} startX - The starting X coordinate of the block.
+          * @param {number} startY - The starting Y coordinate of the block.
+          * @param {number} blockSize - The size of the block.
+          * @returns {number} The variance of the block.
+          * @throws Will throw an error if the block variance calculation fails.
+          */
+         function calculateVariance(data, width, height, startX, startY, blockSize) {
+             try {
+                 let sum = 0, sumSq = 0, count = 0;
+                 for (let y = startY; y < startY + blockSize && y < height; y++) {
+                     for (let x = startX; x < startX + blockSize && x < width; x++) {
+                         const idx = y * width + x;
+                         sum += data[idx];
+                         sumSq += data[idx] * data[idx];
+                         count++;
+                     }
+                 }
+                 const mean = sum / count;
+                 return sumSq / count - mean * mean;
+             } catch (error) {
+                 throw new Error('Failed to calculate variance.');
+             }
+         }
+         
+         /**
+          * Adjusts the variance to a score between 0 and 1 based on a logistic function.
+          * @param {number} variance - The raw variance.
+          * @returns {number} The adjusted clarity score between 0 and 1.
+          * @throws Will throw an error if the adjustment fails.
+          */
+         function logAdjustVariance(variance) {
+             try {
+                 // Parameters for the logistic function to control the curve
+                 const k = 0.02; // Steepness of the curve
+                 const x0 = 100; // Midpoint of the curve (where the output is 0.5)
+         
+                 // Logistic function to map variance to a clarity score between 0 and 1
+                 const clarityScore = 1 / (1 + Math.exp(-k * (variance - x0)));
+         
+                 return clarityScore;
+             } catch (error) {
+                 throw new Error("Failed to adjust variance using the logistic function.");
+             }
+         }
+         
+         
+                 document.getElementById('imageInput').addEventListener('change', async function(e) {
+                     const file = e.target.files[0];
+                     if (file) {
+                         const reader = new FileReader();
+                         reader.onload = function(e) {
+                             const img = new Image();
+                             img.onload = async function() {
+                                 const canvas = document.getElementById('originalCanvas');
+                                 canvas.width = img.width;
+                                 canvas.height = img.height;
+                                 const ctx = canvas.getContext('2d');
+                                 ctx.drawImage(img, 0, 0);
+         
+                                 const imageData = ctx.getImageData(0, 0, img.width, img.height);
+         
+         
+                                 try {
+                                     console.log(Date.now())
+                                     const blurResult = detectBlur(imageData.data, img.width, img.height, 32, 0.5);
+                                     console.log(Date.now())
+                                     document.getElementById('result').innerHTML = `
+                                         <h3>Blur Detection Result</h3>
+                                         <p>Clarity Score: ${blurResult.clarityScore.toFixed(2)}</p>
+                                         <p>Raw Clarity Score: ${blurResult.rawClarityScore.toFixed(2)}</p>
+                                         <p>Is Blurred: ${blurResult.isBlurred ? 'Yes' : 'No'}</p>
+                                         <p>Note: Higher scores indicate sharper images, while lower scores indicate blur.</p>
+                                     `;
+                                 } catch (error) {
+                                     document.getElementById('result').innerHTML = `
+                                         <h3>Error</h3>
+                                         <p>${error.message}</p>
+                                     `;
+                                 }
+                             };
+                             img.src = e.target.result;
+                         };
+                         reader.readAsDataURL(file);
+                     }
+                 });
+            
+      </script>
+   </body>
+</html>
